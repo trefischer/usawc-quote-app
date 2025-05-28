@@ -1,7 +1,7 @@
 
 import streamlit as st
 from fpdf import FPDF
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class QuotePDF(FPDF):
     def header(self):
@@ -22,7 +22,7 @@ class QuotePDF(FPDF):
         self.set_font("Helvetica", "", 9)
         self.cell(50, 5, "Quote #: 996095", 0, 2, "R")
         self.cell(50, 5, f"Date: {datetime.today().strftime('%b %d, %Y')}", 0, 2, "R")
-        self.cell(50, 5, f"Expires: {(datetime.today() + pd.Timedelta(days=1)).strftime('%b %d, %Y')}", 0, 2, "R")
+        self.cell(50, 5, f"Expires: {(datetime.today() + timedelta(days=1)).strftime('%b %d, %Y')}", 0, 2, "R")
 
     def quote_table(self, data):
         self.set_y(40)
